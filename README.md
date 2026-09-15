@@ -8,22 +8,34 @@ A Steam Workshop mod for The Binding of Isaac: Repentance+ that plays Persona 5 
 | --- | --- |
 | `metadata.xml` | Workshop metadata. No `<id>`; the uploader assigns one. |
 | `main.lua` | Registers the "P5R" soundtrack with Soundtrack Menu on run start. |
-| `content/music.xml` | Declares `P5R Main Menu` pointing at `music/P5R/main_menu.ogg`. |
+| `content/music.xml` | Declares the P5R tracks (main menu, tainted menu layer, run-start jingles). |
 | `resources/music/P5R/` | The .ogg files. Folder name must stay `P5R`. |
-| `scripts/convert.sh` | ffmpeg wrapper that produces a compliant .ogg. |
+| `scripts/convert.sh` | ffmpeg + oggenc wrapper that produces a compliant .ogg. |
 
 The three strings that must agree: `AddSoundtrackToMenu("P5R")` in `main.lua`, the `P5R ` prefix on every track name in `music.xml`, and the `music/P5R/` root folder.
 
-## Adding the audio
+## Tracks
+
+| File | Source | Cut |
+| --- | --- | --- |
+| `main_menu_intro.ogg` | Beneath the Mask (instrumental) | 0:00 to 0:15.474, plays once |
+| `main_menu.ogg` | Beneath the Mask (instrumental) | 0:15.474 to 1:33.313, loops, 0.5 s crossfade at the seam |
+| `tainted_menu_intro.ogg` | Life Will Change | 0:00 to 1:54.688, plays once |
+| `tainted_menu.ogg` | Life Will Change | 1:54.688 to 3:51.053, loops, 0.5 s crossfade at the seam |
+| `run_start.ogg` | Last Surprise | first two bars, 5.71 s, fades out |
+| `tainted_run_start.ogg` | Life Will Change | first four bars, 7.67 s, fades out |
+
+All files are OGG Vorbis, managed constant 192 kbps, 44.1 kHz stereo. Loop points were chosen by cross-correlating each song with itself to find where a section restates, then refining to the sample.
+
+## Replacing or adding audio
 
 1. Pick the source track and find the loop point (Audacity, or trial and error with the start/end args below).
 2. Convert it. Filenames must be ASCII with no `!` or accented letters.
    ```sh
-   brew install ffmpeg   # once, on macOS
+   brew install ffmpeg vorbis-tools   # once, on macOS
    scripts/convert.sh "path/to/source.flac" resources/music/P5R/main_menu.ogg [start] [end]
    ```
-3. If the song has a non-looping intro, cut it into `main_menu_intro.ogg` with the same script and switch to the `intro=` line in `content/music.xml`. Intro and loop must share a bitrate or the music stops after the intro.
-4. Delete `resources/music/P5R/README.txt` before uploading.
+3. If the song has a non-looping intro, cut it into a separate `_intro.ogg` with the same script and reference it with `intro=` in `content/music.xml`. Intro and loop must share a bitrate or the music stops after the intro.
 
 ## Testing (Windows)
 
