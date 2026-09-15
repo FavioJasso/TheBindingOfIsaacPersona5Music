@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+    <name>P5R Menu Music (Soundtrack Menu)</name>
+    <directory>p5r menu music</directory>
+    <description>Persona 5 Royal music for the main menu of The Binding of Isaac: Repentance+. Menu-only: every in-run track keeps the game's default audio.
+
+Requires the Soundtrack Menu mod (by Nato Potato) with Repentogon. After enabling this mod, start a run once, then open Mod Config Menu > Soundtrack > Main Menu and pick "P5R".
+
+Music by Shoji Meguro / Atlus. This is a fan mod; no ownership of the music is claimed.</description>
+    <version>1.0</version>
+    <visibility>Public</visibility>
+    <tag id="Music"/>
+</metadata>

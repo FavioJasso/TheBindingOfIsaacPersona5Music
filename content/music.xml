@@ -1,0 +1,20 @@
+<music root="music/P5R/">
+	<!-- Track names must be "P5R <Track Type>" to match AddSoundtrackToMenu("P5R") in main.lua. No id attributes. -->
+	<!-- Any track type not listed here falls back to the game's default audio. -->
+
+	<track name="P5R Main Menu" path="main_menu.ogg" loop="true" />
+
+	<!--
+	Optional variants. Uncomment only once the matching .ogg exists in resources/music/P5R/.
+
+	Main menu with a separate non-looping intro (intro and loop MUST share the same bitrate):
+	<track name="P5R Main Menu" intro="main_menu_intro.ogg" path="main_menu.ogg" loop="true" />
+
+	Main menu with a different track for the tainted ("twisted") menu, as the template does it:
+	<track name="P5R Main Menu" intro="main_menu_intro.ogg" path="main_menu.ogg" layerintro="tainted_menu_intro.ogg" layer="tainted_menu.ogg" loop="true" layermode="2" layerfadespeed="0.01" />
+
+	Run-start jingles (Repentogon only):
+	<track name="P5R Run Start" path="run_start.ogg" loop="false" />
+	<track name="P5R Tainted Run Start" path="tainted_run_start.ogg" loop="false" />
+	-->
+</music>
